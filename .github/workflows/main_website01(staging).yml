@@ -87,7 +87,7 @@ jobs:
       # ✅ **設定 Azure Web App 啟動命令**
       - name: Set startup command in Azure
         run: |
-          az webapp config set --resource-group YourResourceGroup \
+          az webapp config set --resource-group "網站測試" \
                                --name website01 \
                                --startup-file "gunicorn -w 4 -b 0.0.0.0:8000 admin_service.app:app"
 
