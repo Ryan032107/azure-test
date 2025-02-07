@@ -67,6 +67,12 @@ jobs:
         with:
           name: python-app
 
+      - name: Debug Secrets
+        run: |
+          echo "Client ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}"
+          echo "Tenant ID: ${{ secrets.AZUREAPPSERVICE_TENANTID }}"
+          echo "Subscription ID: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}"
+
       # ✅ **解壓縮 `release.zip`，確保 `app.py` 在正確位置**
       - name: Unzip artifact for deployment
         run: unzip release.zip -d .
