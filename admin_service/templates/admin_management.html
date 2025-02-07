@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/roleManagement.js') }}"></script>
+<div class="container-fluid">
+    <div class="mb-3">
+        <h3 style="margin-top: 20px;">管理者設定</h3>
+    </div>
+
+    <!-- User Addition Form -->
+    <div class="card border-0 mb-3">
+        <div class="card-header">
+            <h5 class="card-title">新增管理者</h5>
+        </div>
+        <div class="card-body">
+            <form id="addUserForm" action="/add_admin" method="post">
+                <div class="form-group">
+                    <label for="username">用戶名稱</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="database_name">使用資料庫</label>
+                    <input type="text" id="database_name" name="database_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="database_line_id">LINE ID</label>
+                    <input type="text" id="database_line_id" name="database_line_id" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="limit_size">存儲限制 (GB)</label>
+                    <input type="number" step="0.01" id="limit_size" name="limit_size" class="form-control" value="2.00" required>
+                </div>
+                <button type="submit" class="btn btn-primary">新增用戶</button>
+            </form>
+        </div>        
+    </div>
+
+    <!-- Table Element -->
+    <div class="card border-0">
+        <div class="card-header">
+            <h5 class="card-title">
+            </h5>
+            <h6 class="card-subtitle text-muted">
+                管理者用戶列表
+            </h6>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for key in admin_users_keys %}
+                            {% if key != "password" %}
+                                <th scope="col">{{ key }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th scope="col">存儲限制 (GB)</th>
+                        <th scope="col">操作</th>
+                    </tr>                    
+                </thead>
+                <tbody>
+                    {% for admin in admin_users_info %}
+                    <tr>
+                        <td>{{ admin.id }}</td>
+                        <td>{{ admin.user_name }}</td>
+                        <td>{{ admin.database_name }}</td>
+                        <td>{{ admin.database_line_id }}</td>
+                        <td>{{ admin.limit_size }}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm admin-delete-button" data-id="{{ admin.id }}">刪除</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

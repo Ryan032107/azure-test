@@ -1,0 +1,37 @@
+from langchain.docstore.document import Document
+from langchain_mongodb import MongoDBAtlasVectorSearch
+from langchain_openai import OpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from datetime import datetime
+# from google.cloud import storage
+import fitz
+import io
+import os
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.abspath('../utility-encoder-420001-0db7ee074ec6.json')
+# Instantiates a client
+# storage_client = storage.Client()
+splitter = TextSplitter(separator="\n", chunk_size=500, overlap=20)
+
+def process_pdf(pdf_data:str) -> list:
+    # Open the PDF file
+    doc = fitz.open("pdf", pdf_data)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+    if text:
+        chunks = splitter.split_text(text)
+        return chunks
+    return None
+
+def create_document(data, collection, index, source):
+    doc = Document(page_content=data, metadata={"source": source , "updatedAt": datetime.now()})
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=200, length_function=len)
+    docs = text_splitter.split_documents([doc])
+    # Create the vector store
+    vector_store = MongoDBAtlasVectorSearch.from_documents(
+        documents = docs,
+        embedding = OpenAIEmbeddings(),
+        collection = collection,
+        index_name = index
+    )
+    return "document created successfully"

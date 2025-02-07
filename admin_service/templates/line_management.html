@@ -1,0 +1,52 @@
+<!-- templates/line_management.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="mb-3">
+        <h3 style="margin-top: 20px;">LINE Bot 帳號</h3>
+    </div>
+
+    <!-- Table Element -->
+    <div class="card border-0">
+        <div class="card-header">
+            <h5 class="card-title">
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for key in admin_users_keys %}
+                            {% if key == "user_name" %}
+                                <th scope="col">使用者名稱</th>
+                            {% elif key == "database_line_id" %}
+                                <th scope="col">line_id</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th scope="col">好友數量</th>
+                        <th scope="col">LINE帳號管理網站</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for admin in admin_users_info %}
+                            <td>{{ admin.user_name }}</td>
+                            <td>{{ admin.database_line_id }}</td>
+                        {% endfor %}
+                        <td>{{ user_count }}</td>
+                        <td>
+                            <a href="https://account.line.biz/login?redirectUri=https%3A%2F%2Fmanager.line.biz%2F" target="_blank">
+                                點我管理
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

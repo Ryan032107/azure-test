@@ -1,0 +1,105 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/index-teaching.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="../static/css/styles.css">
+<div class="container-fluid mb-4">
+    <h2>知識庫管理系統使用流程教學</h2>
+</div>
+
+<div class="container">
+    <div class="step-section">
+        <div class="step-number">
+            <span>第一步</span>
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+        <div class="content-section">
+            <div class="content-text">
+                <h3><i class="fa-solid fa-tags"></i> 類別名稱</h3>
+                <p>不可使用中文，僅可使用英文大小寫/數字/底線</p>
+                <p>輸入此類別的名稱以分類哪些資料需上傳至此處</p>
+            </div>
+            <div class="content-image-wrapper">
+                <img src="{{ url_for('static', filename='image/collection-type.png') }}" class="content-image" alt="類別名稱圖片">
+            </div>
+        </div>
+    </div>
+    <div class="step-section">
+        <div class="step-number">
+            <span>第二步</span>
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+        <div class="content-section">
+            <div class="content-text">
+                <h3><i class="fa-solid fa-lightbulb"></i> 提示字</h3>
+                <h5>好的提示詞應該給模型提供具體且清晰的輸入文本，以便引導模型生成特定的響應或輸出。</h5>
+                <p>一、 好的提示詞：輸入 ⇒</p>
+                <ol>
+                    <li>這是關於先構技研銷售產品的售後服務資料庫，內容包括：</li>
+                    <li>1. 自動化設備與系統</li>
+                    <li>2. 協力廠之技術文件(機器人、PLC、馬達等)</li>
+                    <li>3. Visual Components(VC)軟體</li>
+                    <li>4. 無人搬運車與服務型機器人</li>
+                    <li>5. AI視覺與AI Chatbot</li>
+                    <li>解釋：這個提示詞給出了具體的描述。</li>
+                </ol>
+                
+                <p>二、 壞的提示詞：輸入 ⇒</p>
+                <p>先構技研銷售產品服務。</p>
+                <p>解釋：這個提示詞太模糊，不提供具體的方向或細節，AI 可能會生成一個非常廣泛或不連貫的故事。</p>
+                <h4>確認更改完畢後，點擊保存鍵儲存設定</h4>
+            </div>
+            <div class="content-image-wrapper">
+                <img src="{{ url_for('static', filename='image/prompt.png') }}" class="content-image" alt="提示字圖片">
+            </div>
+        </div>
+    </div>
+    <div class="step-section">
+        <div class="step-number">
+            <span>第三步</span>
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+        <div class="content-section">
+            <div class="content-text">
+                <h3><i class="fa-solid fa-folder-open"></i> 檔案列表</h3>
+                <h5>僅可上傳 pdf, txt, docx, pptx, xlsx 格式的檔案 </h5>
+                <ol>
+                    <li>一、 點擊選擇檔案，從本地選擇所需要的檔案</li>
+                    <li>二、 典籍上傳檔案，檔案將會上傳至資料庫中，並出現在下方列表</li>
+                    <li>三、 上傳完成後，點擊刪除檔案，可從資料庫中刪除</li>
+                    <li>四、 上傳完成檔案後，可以點擊下載確認檔案是否正確 </li>
+                </ol>
+            </div>
+            <div class="content-image-wrapper">
+                <img src="{{ url_for('static', filename='image/file-list.png') }}" class="content-image" alt="檔案列表圖片">
+            </div>
+        </div>
+    </div>
+    <div class="step-section">
+        <div class="step-number">
+            <span>第四步</span>
+        </div>
+        <div class="content-section">
+            <div class="content-text">
+                <h3><i class="fa-solid fa-rotate-right"></i> 模型更新</h3>
+                <h5>將上傳的資料內容更新至模型中，依照單次更新的資料大小需等待不同時長，如資料較多則更新較久</h5>
+                <ol>
+                    <li>一、 確認所需要的檔案都上傳至列表內後，點擊保存所有設定</li>
+                    <li>二、 確認設定已經儲存成功後，點擊更新模型</li>
+                    <li>三、 待更新結束通知跳出即可使用 AI Chatbot</li>
+                </ol>
+            </div>
+            <div class="content-image-wrapper">
+                <img src="{{ url_for('static', filename='image/update.png') }}" class="content-image" alt="檔案列表圖片">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入 Bootstrap 和 FontAwesome -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

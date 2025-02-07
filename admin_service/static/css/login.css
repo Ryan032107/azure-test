@@ -1,0 +1,42 @@
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.login_container__form {
+    width: 100%;
+    height: 45vh;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.login_form__input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+@media (max-width: 340px) {
+    .login_container__form h3 {
+        font-size: 1.5em; /* 調整為較小的字體大小 */
+    }
+
+    .login_form__input {
+        font-size: 1.5em; /* 調整輸入框的文字大小 */
+    }
+
+    .btn {
+        font-size: 1.3em; /* 調整按鈕文字大小 */
+    }
+}

@@ -1,0 +1,109 @@
+
+/* 針對亮模式的樣式 */
+html[data-bs-theme="light"] .container {
+    color: #333; /* 亮模式下的字體顏色 */
+}
+
+html[data-bs-theme="light"] h2, 
+html[data-bs-theme="light"] h4 {
+    color: #333; /* 亮模式下的標題顏色 */
+}
+
+html[data-bs-theme="light"] .container ol, 
+html[data-bs-theme="light"] .container ul {
+    color: #333; /* 亮模式下的列表文字顏色 */
+    background-color: #f8f9fa; /* 亮模式下的背景顏色調整為淺色 */
+    border: 1px solid #ddd; /* 添加邊框來區分背景 */
+}
+
+html[data-bs-theme="light"] .intro-image {
+    border: 1px solid #666; /* 亮模式下的圖片邊框顏色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 亮模式下的陰影效果 */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #f8f9fa; /* 淺色字體 */
+}
+
+.container h2 {
+    font-weight: 900; /* 更粗的字體 */
+    font-size: 2.8rem; /* 增大字體 */
+    margin-bottom: 20px; /* 增加標題下方的間距 */
+    border-bottom: 2px solid #4a90e2; /* 添加下邊框來區分標題 */
+    padding-bottom: 10px; /* 增加下邊距 */
+}
+
+.container h4 {
+    font-weight: 700; /* 中等粗細 */
+    font-size: 2.2rem; /* 調整字體大小 */
+    margin-bottom: 15px; /* 調整與段落的距離 */
+}
+
+main.content ol, main.content ul {
+    padding-left: 25px;
+    font-size: 1.2rem; /* 調整內容字體大小 */
+    background-color: #1f1f1f; /* 添加背景色以區分內容 */
+    padding: 15px;
+    border-radius: 5px; /* 圓角效果 */
+    margin-bottom: 20px; /* 調整段落與標題的距離 */
+}
+
+main.content li {
+    line-height: 1.8; /* 增加行距 */
+    margin-bottom: 10px; /* 調整列表項的間距 */
+}
+
+main.content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+main.content .intro-image {
+    display: block;
+    margin: 0 auto; /* 圖片左右置中 */
+    max-width: 80%; /* 圖片寬度不超過容器 */
+    height: auto; /* 保持圖片比例 */
+    margin-top: 20px;
+    border: 1px solid #ccc; /* 添加邊框以增強對比 */
+    border-radius: 5px; /* 圓角邊框 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+}
+
+/* 小螢幕的響應式調整 */
+@media (max-width: 999px) {
+    .container {
+        padding: 15px; /* 減少容器內邊距 */
+        max-width: 100%; /* 適應不同大小的螢幕 */
+    }
+
+    main.content h2 {
+        font-size: 1.8rem; /* 調整標題字體大小 */
+        margin-bottom: 15px;
+        border-bottom: 1px solid #4a90e2; /* 更細的邊框 */
+    }
+
+    main.content h4 {
+        font-size: 1.6rem; /* 調整標題字體大小 */
+        margin-bottom: 10px;
+    }
+
+    main.content ol, main.content ul {
+        padding-left: 15px; /* 減少清單項的縮進 */
+        font-size: 1.1rem; /* 調整內容字體大小 */
+    }
+
+    main.content li {
+        line-height: 1.6;
+        margin-bottom: 8px;
+    }
+
+    .intro-image {
+        max-width: 100%; /* 圖片寬度全屏 */
+        margin-top: 15px;
+        box-shadow: none; /* 簡化視覺效果 */
+        border: none; /* 簡化視覺效果 */
+    }
+}

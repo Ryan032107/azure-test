@@ -1,0 +1,387 @@
+/* 針對亮模式的樣式設定 */
+html[data-bs-theme="light"] {
+    background-color: #f0f0f0; /* 亮模式下的背景顏色 */
+    color: #333; /* 亮模式下的文字顏色 */
+}
+
+html[data-bs-theme="light"] body {
+    background-color: #f0f0f0; /* 亮模式下的背景顏色 */
+    color: #333; /* 亮模式下的文字顏色 */
+}
+
+html[data-bs-theme="light"] .content-section {
+    background-color: #ffffff; /* 亮模式下的卡片背景顏色 */
+    border-left: 4px solid #007bff; /* 亮模式下的左側邊框顏色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 亮模式下的陰影 */
+}
+
+html[data-bs-theme="light"] .step-number {
+    color: #007bff; /* 亮模式下的步驟編號顏色 */
+}
+
+html[data-bs-theme="light"] h2, 
+html[data-bs-theme="light"] h3 {
+    color: #333; /* 亮模式下的標題顏色 */
+}
+
+html[data-bs-theme="light"] .content-section p, 
+html[data-bs-theme="light"] .content-section li {
+    color: #555; /* 亮模式下的段落和清單項顏色 */
+}
+
+html[data-bs-theme="light"] .step-number i {
+    color: #007bff; /* 亮模式下的箭頭顏色 */
+}
+
+html[data-bs-theme="light"] #sidebar {
+    color: #f8f8f8; /* 亮模式下的導航欄和側邊欄文字顏色 */
+}
+
+/* 亮模式下的主體背景色 */
+html[data-bs-theme="light"] .main {
+    background-color: #e9ecef;
+}
+
+/* 亮模式下的主體字體顏色 */
+html[data-bs-theme="light"] .main {
+    color: #333;
+}
+
+html[data-bs-theme="light"] .content-section:hover {
+    background-color: #e0e0e0; /* 亮模式下的卡片懸停背景顏色 */
+}
+
+html[data-bs-theme="light"] .sidebar-link {
+    color: #f7f6f6; /* 亮模式下的側邊欄連結顏色 */
+}
+
+
+/* 基本樣式 - 適用於所有寬度 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* 通用的容器設置 */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* 基本標題樣式 */
+content h2, h3 {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+/* 基本內容文字樣式 */
+.content-section p,main.content li {
+    color: #f3e4d7;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+/* 響應式設計：適用於 1024px 以上 */
+@media (min-width: 1025px) {
+    /* 帶編號的內容塊 */
+    .step-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    /* 編號的樣式 */
+    .step-number {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #4a90e2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+
+    .step-number span {
+        margin-bottom: 5px;
+    }
+
+    .step-number i {
+        font-size: 1.5rem; 
+    }
+
+    /* 父級容器的設置，確保空間分配和對齊合理 */
+    .content-section {
+        display: flex;
+        justify-content: space-between; /* 確保圖片和文字有足夠的空間 */
+        align-items: center; /* 確保圖片和文字的垂直對齊 */
+        background-color: #1f1f1f;
+        border-left: 4px solid #4a90e2;
+        padding: 20px 25px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        flex: 1;
+    }
+
+    /* 文本内容部分 */
+    .content-text {
+        font-size: 17px;
+        flex: 2;
+        margin-right: 20px;
+    }
+
+    .content-image-wrapper {
+        display: flex;
+        justify-content: center; /* 水平置中圖片 */
+        align-items: center; /* 垂直置中圖片 */
+        max-width: 300px; /* 控制圖片容器的最大寬度 */
+        max-height: 150px;
+        height: 100%; /* 讓圖片容器的高度填滿父級元素 */
+    }
+
+    /* 通用的圖片設置 */
+    .content-image {
+        max-height: 150px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    /* 取消對第二區塊特定圖片設置，統一圖片樣式 */
+    .step-section:nth-child(2) .content-image {
+        max-height: 350px; /* 使用與其他區相同的最大高度 */
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* 保持圖片比例 */
+    }
+
+    /* 調整第二區塊的內容區域，讓圖片和文本更加平衡 */
+    .step-section:nth-child(2) .content-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* 調整對齊方式 */
+    }
+
+
+    /* 鼠標懸停效果 */
+    .content-section:hover {
+        background-color: #2a2a2a;
+    }
+
+    .content h3 i {
+        font-size: 1.2em;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}
+
+/* 響應式設計：適用於 1024px 到 875px 之間 */
+@media (max-width: 1024px) and (min-width: 875px) {
+    .content-image {
+        display: none;  /* 隱藏圖片 */
+    }
+
+    body {
+        font-size: 0.9rem; /* 全局字體縮小 */
+    }
+
+    .header-title-lg, .header-title-sm, h2, h3 {
+        font-size: 1.2rem; /* 調整標題字體大小 */
+    }
+
+    .content-text {
+        font-size: 0.85rem; /* 調整文本內容字體大小 */
+    }
+
+    .step-number {
+        font-size: 1.8rem; /* 減小步驟編號的字體大小 */
+    }
+
+    .step-number i {
+        font-size: 1.3rem; /* 減小箭頭圖示的大小 */
+    }
+
+    .content-section {
+        padding: 15px 20px; /* 減少內邊距 */
+        border-left: 3px solid #4a90e2; /* 減小邊框寬度 */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* 減少陰影 */
+    }
+
+    .step-section {
+        margin-bottom: 15px; /* 減少步驟之間的間距 */
+    }
+}
+
+/* 響應式設計：適用於 875px 到 730px 之間 */
+@media (max-width: 874.9px) and (min-width: 730px) {
+    .content-image {
+        display: none;  /* 隱藏圖片 */
+    }
+
+    body {
+        font-size: 0.85rem; /* 全局字體縮小 */
+    }
+
+    .header-title-lg, .header-title-sm, h2, h3 {
+        font-size: 1.1rem; /* 調整標題字體大小 */
+    }
+
+    .content-text {
+        font-size: 0.75rem; /* 調整文本內容字體大小 */
+    }
+
+    .content-text h3{
+        font-size: 1.5rem; /* 調整文本內容字體大小 */
+    }
+
+    .step-number span{
+        font-size: 1.8rem; /* 減小步驟編號的字體大小 */
+    }
+
+    .step-number i {
+        font-size: 1.1rem; /* 減小箭頭圖示的大小 */
+    }
+
+    .content-section {
+        padding: 12px 18px; /* 減少內邊距 */
+        border-left: 2px solid #4a90e2; /* 減小邊框寬度 */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 減少陰影 */
+    }
+
+    .step-section {
+        margin-bottom: 12px; /* 減少步驟之間的間距 */
+    }
+}
+
+/* 響應式設計：適用於 730px 到 480px 之間 */
+@media (max-width: 729.9px) and (min-width: 480px) {
+    .content-image {
+        display: none;  /* 隱藏圖片 */
+    }
+
+    body {
+        font-size: 0.8rem; /* 全局字體縮小 */
+    }
+
+    .header-title-lg, .header-title-sm, h2, h3 {
+        font-size: 1.0rem; /* 調整標題字體大小 */
+    }
+    
+    .content-text h3{
+        font-size: 1.1rem; /* 調整文本內容字體大小 */
+    }
+
+    .content-text {
+        font-size: 0.7rem; /* 調整文本內容字體大小 */
+    }
+
+    .step-number {
+        font-size: 1.4rem; /* 減小步驟編號的字體大小 */
+    }
+
+    .step-number i {
+        font-size: 1.0rem; /* 減小箭頭圖示的大小 */
+    }
+
+    .content-section {
+        padding: 10px 15px; /* 減少內邊距 */
+        border-left: 2px solid #4a90e2; /* 減小邊框寬度 */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 減少陰影 */
+    }
+
+    .step-section {
+        margin-bottom: 10px; /* 減少步驟之間的間距 */
+    }
+}
+
+/* 響應式設計：適用於 480px 到 400px 之間 */
+@media (max-width: 479.9px) and (min-width: 400px) {
+    .content-image {
+        display: none;  /* 繼續隱藏圖片 */
+    }
+
+    body {
+        font-size: 0.7rem; /* 再次縮小全局字體 */
+    }
+
+    .header-title-lg, .header-title-sm, h2, h3 {
+        font-size: 0.9rem; /* 繼續減小標題字體大小 */
+    }
+
+    .content-text h3{
+        font-size: 1.1rem; /* 調整文本內容字體大小 */
+    }
+
+    .content-text {
+        font-size: 0.65rem; /* 減小文本內容字體大小 */
+    }
+
+    .step-number {
+        font-size: 1.2rem; /* 減小步驟編號的字體大小 */
+    }
+
+    .step-number i {
+        font-size: 0.9rem; /* 減小箭頭圖示的大小 */
+    }
+
+    .content-section {
+        padding: 8px 12px; /* 減少內邊距 */
+        border-left: 1px solid #4a90e2; /* 減小邊框寬度 */
+        box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.05); /* 減少陰影 */
+    }
+
+    .step-section {
+        margin-bottom: 8px; /* 縮小步驟之間的間距 */
+    }
+}
+
+/* 響應式設計：適用於 400px 以下 */
+@media (max-width: 399.9px) {
+    .content-image {
+        display: none;  /* 保持隱藏圖片 */
+    }
+
+    body {
+        font-size: 0.65rem; /* 再次縮小全局字體 */
+    }
+
+    .header-title-lg, .header-title-sm, h2, h3 {
+        font-size: 0.8rem; /* 繼續減小標題字體大小 */
+    }
+
+    .content-text h3{
+        font-size: 1.1rem; /* 調整文本內容字體大小 */
+    }
+
+    .content-text {
+        font-size: 0.8rem; /* 進一步減小文本內容字體大小 */
+    }
+
+    .step-number {
+        font-size: 1.1rem; /* 減小步驟編號的字體大小 */
+    }
+
+    .step-number i {
+        font-size: 0.8rem; /* 減小箭頭圖示的大小 */
+    }
+
+    .content-section {
+        padding: 5px 10px; /* 減少內邊距 */
+        border-left: 1px solid #4a90e2; /* 減小邊框寬度 */
+        box-shadow: none; /* 移除陰影 */
+    }
+
+    .step-section {
+        margin-bottom: 5px; /* 減少步驟之間的間距 */
+    }
+
+    /* 特殊處理：如果有些內容在超小屏幕上顯示不佳，可以考慮完全隱藏 */
+    .some-specific-class {
+        display: none; /* 如果有特定需要隱藏的內容，針對特定類別進行隱藏 */
+    }
+}

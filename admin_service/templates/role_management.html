@@ -1,0 +1,71 @@
+<!-- templates/role_management.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/roleManagement.js') }}"></script>
+<!-- <script src="../static/js/roleManagement.js"></script> -->
+<div class="container-fluid">
+    <div class="mb-3">
+        <h3 style="margin-top: 20px;">用戶訪問權限設定</h3>
+        <div style="margin-left: auto; text-align: right;">
+            <button id="notes_save_all" class="btn btn-primary submit_btn-in">保存所有內容</button>
+        </div>
+    </div>
+    <!-- Table Element -->
+    <div class="card border-0">
+        <div class="card-header">
+            <h5 class="card-title">
+            </h5>
+            <h6 class="card-subtitle text-muted">
+                可藉由新增或移除用戶的訪問權限來決定用戶能夠訪問哪些訊息。
+            </h6>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for key in user_permissions_keys %}
+                        <th>{{ user_info_mapping[key] if key in user_info_mapping else key }}</th>
+                        {% endfor %}
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {% for user in user_permissions_info %}
+                    <tr>
+                        {% for key in user_permissions_keys %}
+                            <td>
+                                {% if key == 'user_picture_url' %}
+                                    <!-- 显示用户头像 -->
+                                    <img src="{{ user[key] }}" alt="User Picture" style="width: 40px; height: 40px; object-fit: cover;">
+                                {% elif key == 'notes' %}
+                                    <!-- 如果key是'notes'，显示一个可编辑的输入框 -->
+                                    <input type="text" id="note-{{ user.id }}" name="note|{{ user.id }}" value="{{ user[key] }}" class="edit_note">
+                                {% elif ('user_line_name' not in key and 'id' not in key) and user[key] == 1 %}
+                                    <!-- 如果列名包含'permission'且值为1，自动勾选 checkbox -->
+                                    <input type="checkbox" class="edit-permission" name="permission|{{ key }}|{{ user.id }}" checked>
+                                {% elif ('user_line_name' not in key and 'id' not in key) %}
+                                    <!-- 如果列名包含'permission'但值不为1，不勾选 checkbox -->
+                                    <input type="checkbox" class="edit-permission" name="permission|{{ key }}|{{ user.id }}">
+                                {% else %}
+                                    <!-- 其他情况显示数据 -->
+                                    {{ user[key] }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        <td>
+                            <button type="button" class="btn btn-primary save_note" data-user-id="{{ user.id }}">保存</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger user-delete-button" data-id="{{ user.id }}">刪除</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

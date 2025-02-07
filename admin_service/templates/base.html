@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot 系統</title>
+    <link rel="icon" href="{{ url_for('static', filename='image/favicon.ico') }}" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}"> -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<body>
+    <div id="loading" class="hidden">
+        <div class="loading-content">
+            <div class="spinner__updating"></div>
+            模型正在更新中...
+        </div>
+    </div>
+    <div class="wrapper">
+        <aside id="sidebar" class="js-sidebar">
+            <!-- Content For Sidebar -->
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="/">AI Chatbot 系統</a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        <i class="fa-brands fa-bots"></i>
+                        系統管理員
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/" class="sidebar-link">
+                            <i class="fa-solid fa-file-import"></i>
+                            知識庫管理系統
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/roles" class="sidebar-link">
+                            <i class="fa-solid fa-user-check"></i>
+                            用戶訪問權限設定
+                        </a>
+                    </li>
+                    <!-- 管理者設定選項，僅在當前使用者是管理員時顯示 -->
+                    {% if current_user.id == 'admin' %}
+                    <li class="sidebar-item">
+                        <a href="/admins" class="sidebar-link">
+                            
+                            管理者設定
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li class="sidebar-header">
+                        <i class="fa-solid fa-book-open"></i>
+                        使用教學
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/index_teaching" class="sidebar-link">
+                            <i class="fa-solid fa-person-chalkboard"></i>
+                            知識庫管理教學
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/role_teaching" class="sidebar-link">
+                            <i class="fa-solid fa-child-reaching"></i>
+                            用戶訪問權限教學
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/RAG_intro" class="sidebar-link">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            RAG介紹
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">
+                        <i class="fa-solid fa-link"></i>
+                        接口平台
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/line_management" class="sidebar-link">
+                            <i class="fa-brands fa-line"></i>
+                            LINE
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/tmp" class="sidebar-link">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            WhatsAPP
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/tmp" class="sidebar-link">
+                            <i class="fa-regular fa-message"></i>
+                            Message
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/tmp" class="sidebar-link">
+                            <i class="fa-solid fa-user"></i>
+                            Teams
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div class="main">
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse navbar">
+                    <ul class="navbar-nav d-flex">
+                        <li>
+                            <div class="nav-icon pe-md-0">
+                                <span class="nav-text" style="font-size: 1.05rem;">登入帳號：{{ username }}</span>
+                                <i class="fas fa-user" style="font-size: 1.05rem;"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item ms-3 dropdown">
+                            <a href="/" data-bs-toggle="dropdown" class="nav-icon pe-md-0" style="font-size: 1.05rem;">
+                                <span class="nav-text">帳戶管理</span>
+                                <i class="fas fa-home" style="font-size: 1.05rem;"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="/mail-management" class="dropdown-item">信箱管理</a>
+                                <a href="/password-management" class="dropdown-item">密碼管理</a>
+                                <a href="/logout" class="dropdown-item">登出</a>
+                            </div>
+                        </li>
+                    </ul>                    
+                </div>                
+            </nav>
+            <main class="content px-3 py-2">
+                {% block content %}
+                {% endblock %}
+            </main>
+            
+            <a href="/" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a href="/" class="text-muted">
+                                    <strong>copyright ©先構/亞特</strong>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <!-- <li class="list-inline-item">
+                                    <a href="/" class="text-muted">Contact</a>
+                                </li> -->
+                                <li class="list-inline-item">
+                                    <a href="https://www.azhi.app/" class="text-muted">關於我們</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/updateStatus.js"></script>
+    <script>
+        $(document).ready(function() {
+            checkUpdateStatus();  // 在页面加载完成后执行
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css')}}">
+<link rel="stylesheet" href="../static/css/styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/dataManagement.js') }}"></script>
+<script src="{{ url_for('static', filename='js/updateStatus.js') }}"></script>
+<div class="container-fluid">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <h3 class="header-title-lg" >
+            知識庫管理系統
+            <small>(權限分類)</small>
+        </h3>
+
+        <h3 class="header-title-sm" >知識庫管理系統</h3>
+
+        <div class="info-section">
+            <div class="capacity mb-3 section-spacing" >
+                <div class="db-capacity-lg">資料庫容量:</div>
+                <div class="db-capacity-sm">容量：</div>
+                <div><span id="total_size">Loading...</span></div>
+            </div>
+
+            <div class="time mb-3 section-spacing">
+                <div class="last-update-lg">上次更新時間:</div>
+                <div class="last-update-sm">最後更新:</div>
+                <div><span id="update_time">Loading...</span></div>
+            </div>
+        </div>
+
+        <div class="btn-gp">
+            <button id="save_all" class="btn btn-primary btn_save-all">保存所有</button>
+            <button id="update_all" class="btn btn-success btn_update">更新模型</button>
+            <div class="upd-insturction">
+		完成後按更新模型，提示完成即生效
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <!-- Table for displaying file names -->
+    {% for collection in collections %}
+        {% set index = loop.index0 %}  <!-- 获取当前循环的索引，注意 loop.index0 从 0 开始 -->
+        {% set notes = ["基礎權限資料庫", "中階權限資料庫", "高階權限資料庫"] %}
+        <fieldset class="card collection__box">
+            <div class="collection__box__header">
+                <div class="collection__box__header-name" name="collection_display">
+                    {{ collection.collection_name }} 
+                    {% if index < notes | length %}
+                        ({{ notes[index] }})
+                    {% endif %}
+                </div>
+            </div>
+        <!-- Settings form -->
+        <div class="collection__box__block">    
+            <div class="collection__box__block-in">
+                <form class="settingsForm">
+                    <input type="hidden" name="collectionId" value="{{ collection.id }}">
+                    <div class="collection-label">
+                        類別名稱
+                        <small class="collection-description">不可使用中文，僅可使用英文大小寫/數字/底線</small>
+                    </div>
+                    <input class="form" type="text" name="collectionName" value="{{ collection.collection_name }}" pattern="[A-Za-z0-9_]*" title="僅能使用英文大小寫/數字/底線" placeholder="修改名稱"><br>
+                    <div for="prompt" class="collection-label">
+                        提示詞  
+                        <small class="collection-description">輸入類別中包含什麼內容</small>
+                    </div>
+                    <textarea class="form form__large" type="text" name="prompt" placeholder="修改提示詞">{{ collection.prompt }}</textarea><br>
+                    <input class="btn btn-primary" type="submit" value="保存類別設定"><br>
+                </form>
+            </div>
+            <hr>
+            <!-- File upload form -->
+            <div class="collection__box__block-in">
+                <div class="collection-label">
+                    檔案列表
+                    <small class="collection-description">僅可上傳 pdf, txt, docx, pptx, xlsx 格式的檔案</small>
+                </div>
+                <form class="upload_block" action="/upload/{{ collection.id }}" method="post" enctype="multipart/form-data">
+                    <input class="custom-file-input" type="file" name="file" multiple>
+                    <input class="btn btn-primary btn-sm" type="submit" value="上傳檔案">
+                </form><br>
+                <!-- File list -->
+                <div class="file-list-table-container">
+                    <table class="file-list-table">
+                        <tbody>
+                            {% for filename in collection.files %}
+                            <tr>
+                                <td class="file__list">{{ filename }}</td>
+                                <td>
+                                    <div class="file-actions">
+                                        <form action="/download/{{ collection.id }}/{{ filename }}" method="get">
+                                            <input class="btn btn-primary btn-sm file__list__button" type="submit" value="下載">
+                                        </form>
+                                        <form action="/delete/{{ collection.id }}/{{ filename }}" method="post">
+                                            <input class="btn btn-danger btn-sm file__list__button" type="submit" value="刪除">
+                                        </form>
+                                    </div>
+                                </td>                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="loading-{{ collection.id }}" style="display: none; text-align: center;">
+                    <div class="spinner"></div>
+                    loading...
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    {% endfor %}
+</div>
+{% endblock %}

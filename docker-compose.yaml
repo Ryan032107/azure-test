@@ -1,0 +1,22 @@
+# services:
+#   linebot_service:
+#     build:
+#       context: .
+#       dockerfile: linebot_service/Dockerfile
+#     env_file:
+#       - .env
+#     volumes:
+#       - ./linebot_service:/app
+
+#   nginx:
+#     image: nginx:latest
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#       - ./certbot/conf:/etc/letsencrypt
+#       - ./certbot/www:/var/www/certbot
+#     command: mkdir -p /var/www/certbot/.well-known/acme-challenge
+#     depends_on:
+#       - linebot_service

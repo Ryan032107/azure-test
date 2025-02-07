@@ -1,0 +1,989 @@
+.submit_btn {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+
+
+.collection__box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* 为每个区块底部添加间距 */  /*ryan*/
+}
+.collection__box__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 垂直置中 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.collection__box__header-name {
+    margin-left: 5%;
+    font-size: 1.55rem;
+    font-weight: bold;
+    line-height: 3rem;
+    text-align: left; /* 保持标题左对齐 */ /*ryan*/
+}
+.collection__box__header-btn {
+    margin-right: 5%;
+    /* display: none; */
+}
+.collection__box__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px; /* 使用 gap 来控制子项之间的间距 */ /*ryan*/
+}
+.collection__box__block-in{
+    width: 40%;
+    max-height: 500px; /* 设置容器的最大高度，根据需要调整 */
+    overflow: auto; /* 超過最大高度時顯示垂直滾動條 */
+    display: flex;
+    flex-direction: column;
+    font-size: 1.05rem;
+    
+    /*ryan*/
+    flex: 1;
+    min-width: 200px; /* 设置最小宽度，确保在小屏幕下的显示效果 */
+    max-width: 45%; /* 限制最大宽度，防止内容过宽 */
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 1.05rem;
+    line-height: 1.5rem;/*此行原為2*/
+}
+
+.collection__box__block-in h5 {
+    margin-bottom: 1rem;
+}
+
+.collection-label {
+    font-size: 1.15rem; /* 調整為所需的字體大小 */
+    font-weight: bold; /* 或者使用其他字體粗細 */
+    margin-bottom: 0.5rem; /* 調整下方間距 */
+}
+
+.collection-description {
+    font-size: 0.975rem; /* 小字體 */
+    color: #6c757d; /* 說明文字顏色 */
+    font-weight: normal; /* 確保文字不加粗 */
+}
+
+/* 父容器設定為 Flexbox */
+.file-actions {
+    display: flex;
+    gap: 5px; /* 按鈕之間的間距，可以根據需要調整 */
+}
+
+.file__list__button {
+    margin: 0; /* 移除按鈕的外邊距，使用 gap 來控制間距 */
+}
+.file__list {
+    margin: 2.5px 0 !important; /* Adds space above and below each row */
+    padding-right: 20px;
+    overflow-y: auto;  /* 超過最大高度時顯示垂直滾動條 */
+}
+
+.file-list-table-container {
+    max-height: 300px; /* 設置最大高度，可以根據需要調整 */
+    overflow-y: auto; /* 超過最大高度時顯示垂直滾動條 */
+    margin-bottom: 1rem; /* 可選：底部間距 */
+}
+
+.file-list-table {
+    width: 100%; /* 確保表格寬度自適應父容器 */
+    border-collapse: collapse; /* 合併邊框 */
+}
+
+.upload_block{
+    display: flex;
+}
+.custom-file-input {
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: '選擇檔案';
+    display: inline-block;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color for primary button */
+    border: 1px solid transparent; /* Bootstrap style for primary button */
+    border-radius: 0.375rem; /* Rounded borders like Bootstrap buttons */
+    padding: 0.375rem 0.75rem; /* Padding similar to Bootstrap buttons */
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none; /* Safari and older versions of Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard property */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out; /* Smooth transition for hover */
+}
+.custom-file-input:hover::before {
+    background-color: #0056b3; /* Darker shade for hover */
+    /* color: white; Make text white on hover */
+}
+.custom-file-input:active::before {
+    background-color: #004085; /* Even darker shade for active */
+    /* color: white; */
+}
+
+
+.form {
+    width: 100%; /* 使輸入框寬度自適應父容器 */
+    padding: 0.5rem; /* 內邊距，讓文本距離邊框一定距離 */
+    border: 1px solid #ccc; /* 淺灰色邊框 */
+    border-radius: 0.375rem; /* 圓角邊框 */
+    font-size: 0.975rem; /* 文字大小 */
+    line-height: 1.3; /* 行高，提升可讀性 */
+    margin-bottom: 1rem; /* 輸入框與下一元素之間的間距 */
+    box-shadow: inset 0 0.5px 1px rgba(0, 0, 0, 0.1); /* 內陰影，增加深度感 */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* 平滑過渡效果 */
+}
+.form__large {
+    width: 100%;
+    height: 200px; /* 調整為您希望的高度 */
+}
+
+.spinner {
+    margin: 5px auto;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.spinner::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(1turn); }
+}
+
+#loading.hidden {
+    display: none;
+}
+
+#loading {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    z-index: 10000;
+    font-size: 16px;
+}
+
+.loading-content {
+    display: flex;
+    align-items: center;
+}
+
+/*立維更動*/
+.btn-gp{
+    margin-left: auto; 
+    text-align: right; 
+    margin-top: 10px;
+    
+}
+
+.btn_save-all,.btn_save-all {
+    border-radius: 5px;
+    cursor: pointer; /* 設置鼠標懸停效果 */
+}
+
+.btn_update{
+    margin-right: 5px;
+}
+
+.upd-insturction{
+    text-align: center;
+}
+
+.capacity, .time {
+    display: flex;
+    flex-direction: column; /* 使得每個項目縱向排列 */
+    align-items: flex-start; /* 左對齊 */
+}
+
+#total_size, #update_time {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left; /* 左對齊 */
+    margin-left: 10px; /* 與標籤有適當的間距 */
+}
+
+
+@media (min-width: 1440px) { 
+
+    .header-title-lg {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .header-title-sm {
+        display: none;
+    }
+
+    .info-section {
+        display: flex; /* 使用 Flexbox 進行橫向排列 */
+        flex-wrap: nowrap;
+        align-items: flex-start; /* 上對齊 */
+        justify-content: space-around; /* 使兩個區塊之間有最大間距 */
+        margin: 0 auto; /* 將區塊居中 */
+        max-width: 80%; /* 控制整體區域的最大寬度 */
+        gap: 100px; /* 設定區塊之間的間距 */
+    }
+
+    .db-capacity-lg, .last-update-lg {
+        font-size: 1rem;
+        line-height: 1.5;
+        width: 150px; /* 設定統一的寬度，保證左右對齊 */
+        margin-left: 30px; /* 確保與前一元素有間距 */
+        margin-right: 30px; /* 確保與後一元素有間距 */
+    }
+
+    .last-update-sm, .db-capacity-sm {
+        display: none;
+    }
+
+    .btn_save-all, .btn_update {
+        font-size: 16px;
+        margin: 0 20px; /* 設置邊距 */
+    }
+
+    .btn_update {
+        margin-left: 10px; /* 若有特殊需求，可以單獨設置左邊距 */
+    }
+
+    .upd-insturction {
+        margin-top: 8px; 
+        font-size: 1.05em; 
+        width: 100%; 
+    }
+}
+
+/* 當視窗寬度大於1300px時 */
+@media (min-width: 1300px) { 
+
+    .header-title-lg {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .header-title-sm {
+        display: none;
+    }
+    
+    .info-section {
+        display: flex; /* 使用 Flexbox 進行橫向排列 */
+        flex-wrap: nowrap;
+        align-items: flex-start; /* 上對齊 */
+        justify-content: space-around; /* 使兩個區塊之間有最大間距 */
+        margin: 0 auto; /* 將區塊居中 */
+        max-width: 80%; /* 控制整體區域的最大寬度 */
+        gap: 40px; /* 設定區塊之間的間距 */
+    }
+
+    .db-capacity-lg, .last-update-lg {
+        font-size: 1rem;
+        line-height: 1.5;
+        width: 150px; /* 設定統一的寬度，保證左右對齊 */
+        margin-left: 30px; /* 確保與前一元素有間距 */
+        margin-right: 30px; /* 確保與後一元素有間距 */
+    }
+
+    .last-update-sm, .db-capacity-sm {
+        display: none;
+    }
+    
+    .btn_save-all.btn_update {
+        font-size: 16px;
+        margin: 0 20px; /* 設置邊距 */
+    }
+
+    /* 如果有特定樣式需求，可以在這裡添加 */
+    /* .btn_save-all {
+        
+    } */
+
+    .btn_update {
+        margin-left: 10px;
+    }
+
+    .upd-insturction {
+        margin-top: 8px; 
+        font-size: 1.05em; 
+        width: 100%; 
+    }
+}
+/*當視窗寬度小於1300px，大於1100px*/
+@media (max-width: 1299.5px) and (min-width: 1100px) {
+    .header-title-lg{
+        display: none;
+    }
+    .header-title-sm{
+        margin-top: 15px;
+        font-weight: bold;
+    }
+    
+    .info-section {
+        display: flex; /* 使用 Flexbox 進行橫向排列 */
+        flex-wrap: nowrap;
+        align-items: flex-start; /* 上對齊 */
+        justify-content: space-between; /* 使兩個區塊之間有最大間距 */
+        margin: 0 auto; /* 將區塊居中 */
+        max-width: 80%; /* 控制整體區域的最大寬度 */
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        font-size: 1rem;
+        line-height: 1.5;
+        width: 100px; /* 設定統一的寬度，保證左右對齊 */
+        margin-left: 30px; /* 確保與前一元素有間距 */
+        margin-right: 30px; /* 確保與後一元素有間距 */
+    }
+
+    .last-update-sm,.db-capacity-sm {
+        display: none;
+    }
+    
+    .btn_save-all.btn_update{
+        font-size: 16px;
+        margin: 0 20px; /* 設置邊距 */
+    }
+
+    /* .btn_save-all{
+
+    } */
+
+    .btn_update{
+        margin-left: 10px;
+    }
+
+    .upd-insturction{
+        margin-top: 8px; 
+        font-size: 1.05em; 
+        width: 100%; 
+    }
+
+}
+/*當視窗寬度小於1099px，大於1034px*/
+@media (max-width: 1099.5px) and (min-width: 1034px) {
+    .header-title-lg{
+        display: none;
+    }
+    .header-title-sm{
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .db-capacity-lg, .last-update-lg {
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm{     
+        font-size: 1rem;
+        line-height: 1.5;
+        display: inline-block;
+        width: auto;
+        margin-left: 20px; /* 控制間距 */
+        margin-right: 20px; /* 確保和按鈕區域保持間距 */
+    }
+
+    .info-section {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-left: 10px; /* 整體左移 */
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 10px; 
+        gap: 10px;
+    }
+
+    .btn_save-all, .btn_update {
+        width: 80%; 
+        padding: 10px;
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+
+    .upd-insturction {
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 0.9rem; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+}
+
+/*當視窗寬度小於1034px，大於1000px*/
+@media (max-width: 1033.9px) and (min-width: 901px){
+    .header-title-lg{
+        display: none;
+    }
+    .header-title-sm{
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .db-capacity-lg, .last-update-lg {
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm{     
+        font-size: 1rem;
+        line-height: 1.5;
+        display: inline-block;
+        width: auto;
+        margin-left: 20px; /* 控制間距 */
+        margin-right: 20px; /* 確保和按鈕區域保持間距 */
+    }
+    
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 10px; 
+        gap: 10px;
+    }
+
+    .btn_save-all, .btn_update {
+        width: 80%; 
+        padding: 10px;
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+
+    .upd-insturction {
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 0.9rem; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+
+}
+
+@media (max-width: 900px) and (min-width: 765px){
+    .header-title-sm {
+        font-size: 1.2rem; 
+        line-height: 1.2;
+        text-align: center; 
+        margin-bottom: 10px;
+    }
+
+    .header-title-lg{
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        text-align: center;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        display: none;
+    }
+
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 10px; 
+        gap: 10px;
+    }
+
+    .btn_save-all, .btn_update {
+        width: 80%; 
+        padding: 10px;
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+
+    .upd-insturction {
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 0.9rem; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+
+    .collection__box__block {
+        flex-direction: column; /* 使用垂直布局 */
+        align-items: center;
+    }
+
+    .collection__box__block-in {
+        width: 100%; /* 占满父容器的宽度 */
+        max-width: none; /* 取消最大宽度限制 */
+        margin-bottom: 10px; /* 增加底部间距 */
+    }
+
+    .btn {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .upload_block {
+        display: flex;
+        flex-direction: column; /* 垂直排列 */
+        align-items: center; /* 中心对齐 */
+        gap: 10px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .custom-file-input, .btn-primary {
+        width: 90%; /* 占据90%宽度 */
+        margin-bottom: 10px; /* 按钮之间的间距 */
+    }
+
+    .custom-file-input::before {
+        content: attr(placeholder);
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+}
+
+@media (max-width: 480px) and (min-width: 425px) {
+    .header-title-sm {
+        font-size: 1.2rem; 
+        line-height: 1.2;
+        text-align: center; 
+        margin-bottom: 10px;
+    }
+
+    .header-title-lg{
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        text-align: center;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        display: none;
+    }
+
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 10px; 
+        gap: 10px;
+    }
+
+    .btn_save-all, .btn_update {
+        width: 80%; 
+        padding: 10px;
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+
+    .upd-insturction {
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 0.9rem; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+
+    .collection__box__block {
+        flex-direction: column; /* 使用垂直布局 */
+        align-items: center;
+    }
+
+    .collection__box__block-in {
+        width: 100%; /* 占满父容器的宽度 */
+        max-width: none; /* 取消最大宽度限制 */
+        margin-bottom: 10px; /* 增加底部间距 */
+    }
+
+    .btn {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .upload_block {
+        display: flex;
+        flex-direction: column; /* 垂直排列 */
+        align-items: center; /* 中心对齐 */
+        gap: 10px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .custom-file-input, .btn-primary {
+        width: 90%; /* 占据90%宽度 */
+        margin-bottom: 10px; /* 按钮之间的间距 */
+    }
+
+    .custom-file-input::before {
+        content: attr(placeholder);
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+
+@media (max-width: 424px) and (min-width: 375px) {
+    .header-title-sm {
+        font-size: 1.1rem;
+        line-height: 1.2;
+        text-align: left;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    .header-title-lg{
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        text-align: center;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        display: none;
+    }
+
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        gap: 15px; /* 增加按鈕之間的間距 */
+        padding: 0 10px; /* 增加整體內部間距以防止邊界重疊 */
+    }
+
+    .btn_save-all, .btn_update {
+        width: 85%;
+        padding: 10px;
+        font-size: 0.9rem;
+        margin: 0 auto;
+    }
+
+    .upd-insturction {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.85rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .collection__box__block {
+        flex-direction: column; /* 使用垂直布局 */
+        align-items: center;
+    }
+
+    .collection__box__block-in {
+        width: 100%; /* 占满父容器的宽度 */
+        max-width: none; /* 取消最大宽度限制 */
+        margin-bottom: 10px; /* 增加底部间距 */
+    }
+
+    .btn {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .upload_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .custom-file-input, .btn-primary {
+        width: 85%; /* 适当缩小按钮宽度 */
+        margin-bottom: 10px;
+    }
+
+    .custom-file-input::before {
+        content: attr(placeholder);
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+}
+
+
+@media (max-width: 374px) and (min-width: 321px) {
+    .header-title-sm {
+        font-size: 1rem;
+        line-height: 1.2;
+        text-align: left;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+    
+    .header-title-lg{
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        display: none;
+    }
+
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        gap: 15px; /* 增加按鈕之間的間距 */
+        padding: 0 10px; /* 增加整體內部間距以防止邊界重疊 */
+    }
+
+    .btn_save-all, .btn_update {
+        width: 85%;
+        padding: 8px;
+        font-size: 0.9rem;
+        margin: 0 auto;
+        white-space: pre-wrap; /* 允許按鈕文字換行 */
+    }
+
+    .upd-insturction {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .collection__box__block {
+        flex-direction: column; /* 使用垂直布局 */
+        align-items: center;
+    }
+
+    .collection__box__block-in {
+        width: 100%; /* 占满父容器的宽度 */
+        max-width: none; /* 取消最大宽度限制 */
+        margin-bottom: 10px; /* 增加底部间距 */
+    }
+
+    .btn {
+        width: 80%; /* 稍微缩小按钮宽度 */
+        padding: 10px;
+        margin-bottom: 10px; /* 增加底部间距以防止按钮太近 */
+    }
+
+    .collection__box__header-name {
+        font-size: 1.2rem; /* 缩小标题文字大小 */
+        text-align: center; /* 在小屏幕上居中显示标题 */
+    }
+
+    .upload_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 8px;
+    }
+
+    .custom-file-input, .btn-primary {
+        width: 80%; /* 进一步缩小按钮宽度 */
+        margin-bottom: 8px;
+    }
+
+    .custom-file-input::before {
+        content: attr(placeholder);
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 6px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        color: #333;
+        margin-bottom: 6px;
+    }
+
+}
+
+
+@media (max-width: 320px) {
+    .header-title-sm {
+        font-size: 0.9rem; 
+        line-height: 1.2;
+        text-align: left; 
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    .header-title-lg{
+        display: none;
+    }
+
+    .db-capacity-sm, .last-update-sm {
+        font-size: 0.75rem; 
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .db-capacity-lg, .last-update-lg{
+        display: none;
+    }
+
+    .info-section {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn-gp {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 10px; 
+        gap: 10px;
+    }
+
+    .btn_save-all, .btn_update {
+        width: 90%; 
+        padding: 8px;
+        font-size: 0.8rem;
+        margin: 0 auto;
+        white-space: pre-wrap; /* 允許按鈕文字換行 */
+    }
+
+    .collection__box__block {
+        flex-direction: column; /* 使用垂直布局 */
+        align-items: center;
+    }
+
+    .collection__box__block-in {
+        width: 100%; /* 占满父容器的宽度 */
+        max-width: none; /* 取消最大宽度限制 */
+        margin-bottom: 10px; /* 增加底部间距 */
+    }
+
+    .btn {
+        width: 75%; /* 进一步缩小按钮宽度 */
+        padding: 8px; /* 调整按钮内边距 */
+        margin-bottom: 8px; /* 增加底部间距以防止按钮太近 */
+    }
+
+    .collection__box__header-name {
+        font-size: 1.1rem; /* 进一步缩小标题文字大小 */
+        text-align: center; /* 在小屏幕上居中显示标题 */
+    }
+
+    .upd-insturction {
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 0.75rem; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+
+    .upload_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 6px;
+        margin-bottom: 10px; /* 增加底部间距，使文件列表区域靠上 */
+    }
+
+    .custom-file-input {
+        width: 90%; /* 保持较宽的显示区域，以便文件名可见 */
+        padding: 8px;
+        border: 1px solid #007bff; /* 添加边框，使其*/
+    }
+}

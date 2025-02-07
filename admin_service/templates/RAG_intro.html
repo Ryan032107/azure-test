@@ -1,0 +1,35 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/RAG-intro.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/styles.css">
+
+<div class="container mt-4">
+    <h2 class="mb-4">RAG 介紹</h2>
+    
+    <h4 class="mb-3">主要功能和流程</h4>
+    <ol>
+        <li><strong>檢索模組（Retriever）：</strong>當你問問題或需要生成某些文本時，RAG 模型會先從一個大型資料庫或知識庫中找出跟你的問題或提示有關的資料，就像是先查找資料一樣。</li>
+        <li class="mt-2"><strong>生成模組（Generator）：</strong>找到相關資料後，這些資料會被傳給 GPT 模型，它會根據這些資料和原始的問題或提示來生成最終的回答或輸出。這樣做的好處是，可以讓生成的內容更準確、更有內容，也避免了單純依靠 AI 生成時可能會出現的錯誤或胡亂編造的情況（也就是所謂的「AI 幻覺」）。</li>
+        <li class="mt-2"><strong>結合檢索與生成：</strong>RAG 模型的厲害之處在於，它把「檢索」和「生成」這兩個步驟緊緊結合起來，讓模型在生成過程中可以直接使用找到的資料。這樣，它在生成回答時，可以引用多個檢索結果，確保答案更全面和豐富。</li>
+    </ol>
+    <img src="{{ url_for('static', filename='image/RAG流程.png') }}" class="intro-image" alt="RAG 流程圖">
+    <h4 class="mb-3 mt-4">RAG 的優勢</h4>
+    <ul>
+        <li class="mb-2"><strong>知識豐富：</strong>RAG 可以結合外部資料庫中的知識，生成更有信息量和更準確的內容。</li>
+        <li class="mb-2"><strong>可解釋性：</strong>因為 RAG 生成的內容是基於實際檢索到的資料，所以更容易理解這些內容的來源。你可以知道答案是從哪裡來的。</li>
+        <li class="mb-2"><strong>靈活性：</strong>RAG 可以用在很多不同的場景，比如回答問題、生成摘要、寫文章等，特別是當你需要處理長文本或複雜的知識查詢時，它特別有用。</li>
+    </ul>
+
+    <h4 class="mb-3 mt-4">RAG 的應用場景</h4>
+    <ul>
+        <li class="mb-2">問答系統：RAG 可以從一個大型資料庫中檢索出跟問題相關的答案，然後生成詳細而且準確的回答。</li>
+        <li class="mb-2">對話系統：在對話中，RAG 可以利用歷史記錄或知識庫中的信息來輔助生成更貼切的回應。</li>
+        <li class="mb-2">文章生成：在寫報告、文章或者生成長文本文案時，RAG 可以檢索相關資料來確保內容的準確性和全面性。</li>
+    </ul>
+</div>
+{% endblock %}

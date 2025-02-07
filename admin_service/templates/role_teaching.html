@@ -1,0 +1,57 @@
+<!-- templates/role_management.html -->
+{% extends "base.html" %}
+
+{% block title %}老師傅後台管理系統{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/role-teaching.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/styles.css">
+
+<div class="container-fluid mb-4">
+  <h2>用戶訪問權限設定</h2>
+</div>
+
+<div class="container">
+  <div class="step-section">
+      <div class="step-number">
+      <span>第一步</span>
+      <i class="fa-solid fa-arrow-down"></i>
+      </div>
+      <div class="content-section">
+          <h3><i class="fa-solid fa-unlock"></i> 可訪問權限</h3>
+          <p>可選擇 基礎/中階/高階 (權限分為三個等級，互為獨立的資料庫)</p>
+          <img src="{{ url_for('static', filename='image/訪問權限.png') }}" class="content-image" alt="訪問權限">
+      </div>
+  </div>
+
+  <div class="step-section">
+      <div class="step-number">
+        <span>第二步</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
+      <div class="content-section">
+          <h3><i class="fa-solid fa-sticky-note"></i> 備註區</h3>
+          <p>可輸入公司人員名稱，方便標註此line帳號是誰</p>
+          <img src="{{ url_for('static', filename='image/備註.png') }}" class="content-image" alt="備註">
+      </div>
+  </div>
+
+  <div class="step-section">
+      <div class="step-number">
+        <span>第三步</span>
+      </div>
+      <div class="content-section">
+          <h3><i class="fa-solid fa-save"></i> 保存/刪除按鈕</h3>
+          <ol class="card-text">
+              <li>保存: 更改以上步驟後點選保存</li>
+              <li>刪除: 可刪除使用者</li>
+          </ol>
+          <img src="{{ url_for('static', filename='image/保存與刪除.png') }}" class="content-image" alt="保存與刪除">
+      </div>
+  </div>
+</div>
+
+<!-- 引入 Bootstrap 和 FontAwesome -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
