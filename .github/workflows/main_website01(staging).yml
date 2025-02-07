@@ -38,7 +38,12 @@ jobs:
       # ✅ 安裝 linebot_service 依賴
       - name: Install dependencies for Linebot Service
         run: |
-          cd linebot_service && pip install -r requirements.txt
+          if [ -f linebot_service/requirements.txt ]; then
+            pip install -r linebot_service/requirements.txt
+          else
+            echo "❌ requirements.txt 不存在，跳過安裝！"
+          fi
+
 
       # ✅ 壓縮 `admin_service` 和 `linebot_service` 目錄
       - name: Zip artifact for deployment
