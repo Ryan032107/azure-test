@@ -24,10 +24,10 @@ jobs:
         with:
           python-version: '3.12'
       
-      # ✅ 確保 pip 和 setuptools 版本是最新的
-      - name: Upgrade pip and setuptools
+      - name: Manually install required dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
+          python -m pip install numpy==1.26.4
 
       # ✅ 安裝 admin_service 依賴
       - name: Install dependencies for Admin Service
